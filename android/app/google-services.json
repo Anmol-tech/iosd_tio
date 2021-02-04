@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1032913202364",
+    "firebase_url": "https://iosd-tio-default-rtdb.firebaseio.com",
+    "project_id": "iosd-tio",
+    "storage_bucket": "iosd-tio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032913202364:android:b568fc0bf920459f5834b9",
+        "android_client_info": {
+          "package_name": "com.iosd_tio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032913202364-5pqkf7ag5t7cdij302c4lh0qgnrqvaoc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_DxF_pWVsF3ZU7eZFoAkqkmBvu4p_otE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032913202364-5pqkf7ag5t7cdij302c4lh0qgnrqvaoc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
