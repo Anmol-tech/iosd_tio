@@ -22,8 +22,7 @@ class PostPage extends StatefulWidget {
 
 class _PostPageState extends State<PostPage> {
   Data userData;
-  var cm2 =
-      'asdasdashdhasjkdhaskdhaskdhasjhdjkashdjkahskjdhasjkdhkashdkashdkjashdkjashkjdhaskjdhaksjhdkajshdkjashdkashkdahs;lgkas;kjgalgnalskfhasfhajksfhd';
+
   var todo;
 
   _PostPageState({@required this.todo, @required this.userData}) : super();
@@ -132,7 +131,8 @@ class _PostPageState extends State<PostPage> {
               (context, index) => Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 8.0),
                     child: CustomRadioButton(
                       elevation: 0,
                       // absoluteZeroSpacing: true,

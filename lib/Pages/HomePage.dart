@@ -5,8 +5,9 @@ import 'package:expanding_bottom_bar/expanding_bottom_bar.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
-import 'package:iosd_tio/Pages/PostPage.dart';
+import 'package:iosd_tio/Pages/PostPage2.dart';
 import 'package:iosd_tio/Pages/Posts.dart';
+import 'package:iosd_tio/Pages/Thread.dart';
 import 'package:octo_image/octo_image.dart';
 
 // ignore: must_be_immutable
@@ -135,8 +136,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                addAutomaticKeepAlives: true,
+              child: ListView.separated(
                 itemBuilder: (context, index) {
                   return Container(
                     child: Column(
@@ -224,51 +224,70 @@ class _HomePageState extends State<HomePage> {
                           child: Stack(
                             alignment: Alignment.topLeft,
                             children: [
-                              Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(
-                                    top: 10, left: 10, right: 10),
-                                padding: EdgeInsets.only(
-                                  left: 10,
-                                  right: 10,
-                                  bottom: 10,
-                                  top: 20,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: RichText(
-                                  maxLines: 4,
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ThreadPage(
+                                          dataPassed: data, index: index),
                                     ),
-                                    children: [
-                                      TextSpan(
-                                        text: data.comment[index].length > 190
-                                            ? data.comment[index]
-                                                .substring(0, 190)
-                                            : data.comment[index],
+                                  );
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  margin: EdgeInsets.only(
+                                      top: 10, left: 10, right: 10),
+                                  padding: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    bottom: 10,
+                                    top: 20,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: RichText(
+                                    maxLines: 4,
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      if (data.comment[index].length > 190)
+                                      children: [
                                         TextSpan(
-                                          text: "...",
+                                          text: data.comment[index].length > 190
+                                              ? data.comment[index]
+                                                  .substring(0, 190)
+                                              : data.comment[index],
                                         ),
-                                      if (data.comment[index].length > 190)
-                                        TextSpan(
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              print('continue Reading');
-                                            },
-                                          text: " Continue Reading",
-                                          style: TextStyle(
-                                            color: Colors.red[400],
+                                        if (data.comment[index].length > 190)
+                                          TextSpan(
+                                            text: "...",
                                           ),
-                                        ),
-                                    ],
+                                        if (data.comment[index].length > 190)
+                                          TextSpan(
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ThreadPage(
+                                                            dataPassed: data,
+                                                            index: index),
+                                                  ),
+                                                );
+                                              },
+                                            text: " Continue Reading",
+                                            style: TextStyle(
+                                              color: Colors.red[400],
+                                            ),
+                                          ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -313,15 +332,21 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        Container(
-                          color: Colors.grey[300],
-                          height: 5,
-                        )
+                        // Container(
+                        //   color: Colors.grey[300],
+                        //   height: 5,
+                        // )
                       ],
                     ),
                   );
                 },
                 itemCount: data.comment.length,
+                separatorBuilder: (BuildContext context, int index) {
+                  return Divider(
+                    color: Colors.grey[300],
+                    thickness: 5,
+                  );
+                },
               ),
             ),
           ],
@@ -344,7 +369,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PostPage(todo: index, passdata: data),
+        builder: (context) => PostPage(index: index, passdata: data),
       ),
     );
   }

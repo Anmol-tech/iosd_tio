@@ -1,17 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iosd_tio/Pages/PostPage.dart';
 import 'package:iosd_tio/Pages/HomePage.dart';
 import 'package:iosd_tio/Pages/Posts.dart';
-import 'package:iosd_tio/Pages/Thread.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   Data data = Data();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +23,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(
               data: data,
             ),
-        '/Thread': (context) => ThreadPage(),
       },
       initialRoute: '/',
       theme: ThemeData(
