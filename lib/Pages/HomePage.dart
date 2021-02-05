@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:comment_tree/widgets/comment_child_widget.dart';
 import 'package:expanding_bottom_bar/expanding_bottom_bar.dart';
 
 import 'package:flutter/gestures.dart';
@@ -24,6 +25,32 @@ class _HomePageState extends State<HomePage> {
   int navbarIndex = 0;
 
   _HomePageState({@required this.data}) : super();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for (int i = 0; i < data.subComment.length; i++) {
+      List<CommentChildWidget> tempChild = [];
+      for (int j = 0; j < data.subComment[i].length; j++) {
+        tempChild.add(
+          CommentChildWidget(
+            content: Text(data.subComment[i][j].toString()),
+            avatar: PreferredSize(
+              preferredSize: Size.fromRadius(18),
+              child: CircleAvatar(
+                backgroundImage: AssetImage(data.subCommentAvatar[i][j]),
+              ),
+            ),
+            avatarRoot: null,
+            isLast: data.isSubCommnetLiked[i][j],
+          ),
+        );
+      }
+      data.commentChild.add(tempChild);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
