@@ -29,6 +29,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   custom_radio_grouped_button: ^1.0.6+1
   expanding_bottom_bar: ^0.1.2
+  firebase: ^8.0.0
+  firebase_core: ^0.7.0
+  firebase_database: ^6.0.0
   google_fonts: ^1.1.2
   octo_image: ^0.3.0
   scaling_header: ^1.1.1
