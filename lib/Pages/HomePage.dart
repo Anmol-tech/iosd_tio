@@ -345,8 +345,8 @@ class _HomePageState extends State<HomePage> {
                                           child: CircleAvatar(
                                             radius: 22,
                                             backgroundImage: NetworkImage(
-                                              snapshot.data[index]
-                                                  .comments[index].avatar,
+                                              snapshot.data[index].comments[0]
+                                                  .avatar,
                                             ),
                                           ),
                                         ),

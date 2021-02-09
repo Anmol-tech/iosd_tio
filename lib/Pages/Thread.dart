@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:iosd_tio/Pages/PostData.dart';
 import 'package:iosd_tio/Pages/Posts.dart';
-import 'package:iosd_tio/main.dart';
 
 // ignore: must_be_immutable
 class ThreadPage extends StatefulWidget {
@@ -28,6 +25,7 @@ class _ThreadPageState extends State<ThreadPage> {
   MakeCall _makeCall = MakeCall();
   DatabaseReference _databaseReference = FirebaseDatabase.instance.reference();
   _ThreadPageState({@required this.userData, @required this.index}) : super();
+  final _scollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +149,7 @@ class _ThreadPageState extends State<ThreadPage> {
                               LimitedBox(
                                 maxWidth: MediaQuery.of(context).size.width,
                                 child: ListView.builder(
+                                  controller: _scollController,
                                   shrinkWrap: true,
                                   primary: false,
                                   itemCount:
